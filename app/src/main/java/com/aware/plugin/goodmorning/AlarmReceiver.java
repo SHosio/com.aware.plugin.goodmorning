@@ -1,9 +1,5 @@
 package com.aware.plugin.goodmorning;
 
-/**
- * Created by Simo Hosio on 2/19/2015.
- */
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.BroadcastReceiver;
@@ -11,8 +7,7 @@ import android.content.BroadcastReceiver;
 import com.aware.ESM;
 
 public class AlarmReceiver extends BroadcastReceiver {
-
-    public static final String MORNINGJSON = "[{'esm':{" +
+    private static final String MORNINGJSON = "[{'esm':{" +
             "'esm_type':" + ESM.TYPE_ESM_TEXT + "," +
             "'esm_title': 'How did you sleep?'," +
             "'esm_instructions': 'How did you sleep last night? Please provide an estimate on a scale from 1 (worst) to 10 (best) as well as a written description of your night!'," +
@@ -21,9 +16,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             "'esm_trigger': 'com.aware.plugin.goodmorning'" +
             "}}]";
 
-
     public AlarmReceiver() {
-
     }
 
     @Override
@@ -33,5 +26,4 @@ public class AlarmReceiver extends BroadcastReceiver {
         queue_esm.putExtra(ESM.EXTRA_ESM, esmJSON);
         context.sendBroadcast(queue_esm);
     }
-
 }

@@ -45,8 +45,6 @@ public class Plugin extends Aware_Plugin {
     }
 
     private void scheduleMorningQuestionnaire() {
-
-
         Intent alarmIntent = new Intent(this, AlarmReceiver.class);
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_MONTH, 1); //set the calendar to tomorrow!
@@ -56,8 +54,6 @@ public class Plugin extends Aware_Plugin {
         morningIntent = PendingIntent.getBroadcast(getApplicationContext(), morningIntentRC, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), morningIntent); //use WEEKLY_INTENT_RC, so this gets overwritten in case we call this one twice...
         Log.d(TAG, "Set get next bid alarm for :" + cal.getTimeInMillis());
-
-
     }
 
     @Override
@@ -93,10 +89,11 @@ public class Plugin extends Aware_Plugin {
 
 
             if (intent.getAction().equals(ESM.ACTION_AWARE_ESM_EXPIRED)) {
+                scheduleMorningQuestionnaire();
             } else if (intent.getAction().equals(ESM.ACTION_AWARE_ESM_DISMISSED)) {
+                scheduleMorningQuestionnaire();
             } else if (intent.getAction().equals(ESM.ACTION_AWARE_ESM_ANSWERED)) {
-
-
+                scheduleMorningQuestionnaire();
             }
 
         }
