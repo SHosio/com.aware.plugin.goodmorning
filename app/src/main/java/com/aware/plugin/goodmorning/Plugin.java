@@ -95,7 +95,6 @@ public class Plugin extends Aware_Plugin {
             } else if (intent.getAction().equals(ESM.ACTION_AWARE_ESM_ANSWERED)) {
                 scheduleMorningQuestionnaire();
             }
-
         }
     }
 }
